@@ -23,6 +23,11 @@ class TaskController extends Controller
         //
     }
 
+    public function destroy()
+    {
+        //
+    }
+
     public function show($project_id)
     {
         $user_id=1;
