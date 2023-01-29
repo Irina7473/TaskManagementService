@@ -9,6 +9,7 @@ body{
 
 .myfond1{
     background: #006666;
+
 }
 
 .myfond2{
@@ -17,4 +18,9 @@ body{
 
 .myfond3{
     background: cadetblue;
+}
+
+.divgroup{
+    display: flex;
+    flex-direction: row;
 }

@@ -1,19 +1,18 @@
-
 @extends('fields.index')
 
-@section('subtitle', $selected->projektName . ' Задачи')
+@section('subtitle', 'Задачи')
 
 @section('workingField')
-
+    <a href="{{route('tasks.create', $selected->id)}}" class="btn myfond3 mycolor">Добавить</a>
     <div>
-        <div class="container mt-3">
+        <div class="mt-3">
             @if($tasks->count() > 0)
 
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Наименование</th>
-                        <th>Проект</th>
+                        <th>Описание</th>
                         <th>Файлы</th>
                     </tr>
                     </thead>
@@ -21,9 +20,20 @@
                     @foreach($tasks as $task)
                         <tr>
                             <td>{{$task->taskName}}</td>
-                            <td>{{$task->project_id}}</td>
+                            <td>{{$task->content}}</td>
                             <td>
-{{--                                <div><audio id="audio_load" src="/{{$task->file_path}}" controls></audio></div>--}}
+   {{--            <div><audio id="audio_load" src="/{{$task->file_path}}" controls></audio></div>--}}
+  {{--                <td>{{$task->getFile()}}</td>--}}
+                            </td>
+                            <td>
+                                <div class="divgroup">
+                                    <div><input type="submit" name="changetask" value="Изменить"
+                                           href="{{route('tasks.edit', $task->id)}}" class="btn btn-sm btn-info"></div>
+                                    <form action="{{route('tasks.destroy', $task->id)}}" method="POST">
+                                        @csrf @method('DELETE')
+                                        <input type="submit" name="deltask" value="Удалить" class="btn btn-sm btn-danger">
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -38,31 +48,6 @@
 
         </div>
     </div>
-
-    {{--
-    <form action="{{route('$tasks.store')}}" method="POST" enctype="multipart/form-data" >
-        @csrf
-
-        <div class="input-group mb-3">
-            <input type="text" name="title" class="form-control" placeholder="Заголовок">
-        </div>
-
-        <div class="input-group mb-3" >
-            <textarea name="content" class="form-control" placeholder="Описание"></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Загрузка файла</label>
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-
-            <input type="file" name="file_path" class="form-control">
-        </div>
-
-        <button class="input-group-text" id="basic-addon2">Добавить</button>
-    </form>
-    --}}
 
 @endsection
 

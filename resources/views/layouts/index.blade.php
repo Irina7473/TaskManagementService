@@ -15,7 +15,7 @@
                 </div>
                 <div class="container mt-5">
                     <h4 class="text-primary mt-5">Выполните вход</h4>
-                    <form action="{{route('fields.index')}}" method="POST">
+                    <form action="{{route('fields.index', 2)}}" method="POST">
                         <div class="card">
                             @csrf
                             <input type="text" name="login" class="nav-link" placeholder="Логин или email">

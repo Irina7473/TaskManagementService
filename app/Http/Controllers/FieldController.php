@@ -12,10 +12,10 @@ class FieldController extends Controller
 {
     public function  index()
     {
-        $user_id=1;
+        $field_id=1;      //поле для открытия
         return view('fields.index', [
-            'field' => Field::find($user_id),
-            'projects' => Project::all() -> where('fields_id', $user_id)
+            'field' => Field::find($field_id),
+            'projects' => Project::all() -> where('fields_id', $field_id)
         ]);
     }
 
