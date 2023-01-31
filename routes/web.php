@@ -33,12 +33,12 @@ Route::get('/field', [FieldController::class, 'index']);
 Route::resource('fields', FieldController::class);
 
 //Route::get('/role', [RoleController::class, 'index']);
-//Route::resource('roles', RoleController::class);
+Route::resource('roles', RoleController::class);
 
 //Route::get('/team', [TeamController::class, 'index']);
 Route::resource('teams', TeamController::class);
 
-//Route::get('/project', [ProjectController::class, 'index']);
+Route::get('/project', [ProjectController::class, 'index']);
 Route::resource('projects', ProjectController::class);
 
 //Route::get('/task', [TaskController::class, 'index']);
