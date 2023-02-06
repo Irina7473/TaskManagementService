@@ -17,17 +17,19 @@
 </head>
 <body class="myfond1">
 
-{{--Ессли сессия открытая существует, то перейти к field--}}
+Если сессия открытая существует, то перейти к field
 
-{{--<section class="myfond">
+<section class="myfond">
     @yield('door')
-</section>--}}
+</section>
 
 @section('door')
 @show
 
 @section('input')
 @show
+
+{{--{{ $slot }}--}}
 
 <footer class="myfond1 mt-5">
     <div class="container ">

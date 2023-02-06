@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
@@ -22,12 +23,18 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
+/*Route::get('/', function () {
+    return view('app');
+});*/
+
+Route::get('/reg', [RegisteredUserController::class, 'create']);
+Route::resource('reg', RegisteredUserController::class);
 
 Route::get('/field', [FieldController::class, 'index']);
 Route::resource('fields', FieldController::class);

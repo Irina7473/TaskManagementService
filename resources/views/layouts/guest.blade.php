@@ -8,14 +8,25 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+{{--        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">--}}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('assets/css/mystyle.css') }}">
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+{{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     </head>
-    <body>
+    <body class="myfond1">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
     </body>
+    @include('layouts.footer')
+    {{--<footer class="myfond1 mt-5">
+        <div class="container ">
+            <hr>
+            <p>2023 Дипломная работа Сиренко И.А.</p>
+        </div>
+    </footer>--}}
+    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
 </html>

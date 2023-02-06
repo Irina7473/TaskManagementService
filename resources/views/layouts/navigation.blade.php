@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+{{--                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />--}}
+                        <img src="/uploads/images/Absakovo2.jpg" class="img-fluid ">
                     </a>
                 </div>
 
@@ -41,7 +42,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Выйти') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

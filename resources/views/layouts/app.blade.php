@@ -8,12 +8,16 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+{{--        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">--}}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('assets/css/mystyle.css') }}">
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+{{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     </head>
-    <body class="font-sans antialiased">
+    <body class="myfond1">
+{{--    <body class="font-sans antialiased">--}}
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 

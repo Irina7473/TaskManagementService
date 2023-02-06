@@ -2,6 +2,8 @@
 
 @section('door')
 
+{{--    <x-layout>--}}
+
     <div class="container mt-5">
         <div class="row">
 
@@ -31,5 +33,6 @@
         </div>
     </div>
 
+{{--</x-layout>--}}
 @endsection
 
