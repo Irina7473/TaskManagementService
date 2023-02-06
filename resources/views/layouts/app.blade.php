@@ -17,21 +17,48 @@
 {{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     </head>
     <body class="myfond1">
-{{--    <body class="font-sans antialiased">--}}
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+            @include('layouts.menu')
+
+            <div class="">
+                <div class="row">
+                    {{--    Sidebar--}}
+                    <div class="col-2 myfond3 mycolor ">
+{{--                        @include('layouts.sidebar')--}}
+                    </div>
+
+                    {{-- Content --}}
+                    <div class="col-10 myfond2">
+                        <main>
+                            {{ $slot }}
+                        </main>
+                    </div>
                 </div>
-            </header>
+            </div>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+
     </body>
+
+    @include('layouts.footer')
 </html>
+
+
+{{--
+
+<body class="font-sans antialiased">
+<div class="min-h-screen bg-gray-100">
+    @include('layouts.navigation')
+
+    <!-- Page Heading -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            {{ $header }}
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main>
+        {{ $slot }}
+    </main>
+</div>
+</body>--}}
