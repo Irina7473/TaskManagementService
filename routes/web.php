@@ -6,6 +6,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
+
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -33,10 +35,10 @@ require __DIR__.'/auth.php';
     return view('app');
 });*/
 
-Route::get('/reg', [RegisteredUserController::class, 'create']);
-Route::resource('reg', RegisteredUserController::class);
 
-Route::get('/field', [FieldController::class, 'index']);
+Route::resource('users', UserController::class);
+
+//Route::get('/field', [FieldController::class, 'index']);
 Route::resource('fields', FieldController::class);
 
 //Route::get('/role', [RoleController::class, 'index']);

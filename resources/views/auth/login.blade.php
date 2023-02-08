@@ -17,7 +17,6 @@
 
             <!-- Email Address -->
             <div class="mt-4 col-9">
-                {{--                <x-label for="email" :value="__('Email')"/>--}}
                 <x-input id="email" class="block mt-1 " placeholder="Email"
                          type="email" name="email"
                          :value="old('email')" required autofocus/>
@@ -25,16 +24,15 @@
 
             <!-- Password -->
             <div class="mt-4 col-9">
-                {{--                <x-label for="password" :value="__('Password')""/>--}}
                 <x-input id="password" class="block mt-1 " placeholder="Пароль"
                          type="password" name="password"
                          required autocomplete="current-password"/>
             </div>
             <div class="mt-4 col-8">
-            <x-button id="press" class="btn btn-primary btn-block"
-                      type="submit" name="press">
-                {{ __('Войти') }}
-            </x-button>
+                <x-button id="press" class="btn btn-primary btn-block"
+                          type="submit" name="press">
+                    {{ __('Войти') }}
+                </x-button>
             </div>
 
             <!-- Remember Me -->
@@ -57,11 +55,8 @@
             </div>
             <div class="mt-4 col-9">
                 <a class="underline text-sm text-light"
-                   href="{{route('reg.create')}}">Регистрация</a>
+                   href="{{route('register')}}">Регистрация</a>
             </div>
-            {{--<x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>--}}
         </form>
 
     </x-auth-card>

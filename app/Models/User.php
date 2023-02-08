@@ -72,9 +72,11 @@ class User extends Authenticatable
         return asset('assets/file/empty.jpg');
     }
 
+
+
     public function fields()
     {
-        return $this->hasMany(Field::class);
+        return $this->belongsTo(Field::class);
     }
 
 

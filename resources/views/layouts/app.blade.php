@@ -18,7 +18,10 @@
     </head>
     <body class="myfond1">
 
-            @include('layouts.menu')
+{{--            @include('layouts.menu')--}}
+            <div>
+                <x-menu.top-menu></x-menu.top-menu>
+            </div>
 
             <div class="">
                 <div class="row">
@@ -39,7 +42,8 @@
 
     </body>
 
-    @include('layouts.footer')
+    <x-footer />
+
 </html>
 
 

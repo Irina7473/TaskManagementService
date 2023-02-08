@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sound;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,35 +11,19 @@ class UserController extends Controller
 {
     public function  index()
     {
-        return view('layouts.index');
-    }
-
-    public function  create()
-    {
         //
     }
 
-    public function store(Request $request)
+    public function  show($user_id)
     {
-        $request->validate([
-            'email' => ['required', 'max:50'],
-            'userName' => ['required', 'max:50'],
-            'password' => ['required', 'max:50'],
-        ]);
+        $user = User::find($user_id);
+       /* $fields = $user->fields;
+        return $fields;*/
 
-        $user = User::create([
-            'email' => $request->email,
-            'userName' => $request->userName,
-            'password' => $request->password
+        return view('/dashboard', [
+            //'fields' => Team::all() -> where('user_id', $user_id),
+            'fields' => $user->fields,
         ]);
-
-        $user->uploadFile ($request->file('avatar'));
-        return redirect()->route('user.index');
-        // переделать - создать рабочее пространство
     }
 
-    public function auth()
-    {
-        return view('layouts.login');
-    }
 }

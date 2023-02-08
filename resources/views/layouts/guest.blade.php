@@ -16,17 +16,14 @@
         <!-- Scripts -->
 {{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     </head>
+
     <body class="myfond1">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
     </body>
-    @include('layouts.footer')
-    {{--<footer class="myfond1 mt-5">
-        <div class="container ">
-            <hr>
-            <p>2023 Дипломная работа Сиренко И.А.</p>
-        </div>
-    </footer>--}}
-    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+
+    <x-footer />
+
+       <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
 </html>

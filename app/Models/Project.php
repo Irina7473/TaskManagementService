@@ -21,9 +21,6 @@ class Project extends Model
         return $this->belongsTo(Field::class, 'field_id', 'id');
     }
 
-    public function userProjects()
-    {
-        return $this->hasMany(Task::class);
-    }
+
 
 }
