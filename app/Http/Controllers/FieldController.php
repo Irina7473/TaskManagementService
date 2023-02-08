@@ -46,9 +46,9 @@ class FieldController extends Controller
     public function show($user_id)
     {
         $user = User::find($user_id);
-        return view('layouts.menu', [
-            //'fields' => Team::all() -> where('user_id', $user_id),
+        return view('/dashboard', [
             'fields' => $user->fields,
+            //'fields' => Team::all() -> where('user_id', $user_id),
         ]);
     }
 
