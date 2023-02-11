@@ -11,12 +11,12 @@ use Illuminate\Http\Request;
 
 class FieldController extends Controller
 {
-    public function  index($field_id)
+    public function index($field_id)
     {
         //$field_id=1;      //поле для открытия
-        return view('fields.index', [
+        return view('/dashboard', [
             'field' => Field::find($field_id),
-            'projects' => Project::all() -> where('fields_id', $field_id)
+            'projects' => Project::all()->where('fields_id', $field_id)
         ]);
     }
 
@@ -38,17 +38,17 @@ class FieldController extends Controller
 
         ]);
 
-        $user->uploadFile ($request->file('fond'));
-        return redirect()->route('field.index');
+        $user->uploadFile($request->file('fond'));
+        return redirect()->route('/dashboard');
         // переделать - создать рабочее пространство
     }
 
     public function show($user_id)
     {
-        $user = User::find($user_id);
-        return view('/dashboard', [
-            'fields' => $user->fields,
-            //'fields' => Team::all() -> where('user_id', $user_id),
+        $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
+        return view('layouts.show-field', [
+            'users' => User::find($user_id),
+            'fields' => Field::find($teams),
         ]);
     }
 

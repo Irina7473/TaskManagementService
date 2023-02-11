@@ -27,7 +27,8 @@
                 <div class="row">
                     {{--    Sidebar--}}
                     <div class="col-2 myfond3 mycolor ">
-{{--                        @include('layouts.sidebar')--}}
+{{--                        <x-menu.sidebar></x-menu.sidebar>--}}
+
                     </div>
 
                     {{-- Content --}}

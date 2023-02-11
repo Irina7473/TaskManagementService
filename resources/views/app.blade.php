@@ -29,6 +29,8 @@
 @section('input')
 @show
 
+
+
 {{--{{ $slot }}--}}
 
 <footer class="myfond1 mt-5">

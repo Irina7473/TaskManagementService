@@ -20,10 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 
 Route::get('/', function () {
     return view('dashboard');
@@ -47,7 +43,7 @@ Route::resource('roles', RoleController::class);
 //Route::get('/team', [TeamController::class, 'index']);
 Route::resource('teams', TeamController::class);
 
-Route::get('/project', [ProjectController::class, 'index']);
+//Route::get('/project', [ProjectController::class, 'index']);
 Route::resource('projects', ProjectController::class);
 
 //Route::get('/task', [TaskController::class, 'index']);

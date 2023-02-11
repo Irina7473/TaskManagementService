@@ -1,15 +1,18 @@
-@extends('app')
+
+
+
+{{--@extends('app')--}}
 
 {{--@section('door')--}}
 
     {{-- Top Menu --}}
-    @include('layouts.menu')
+   {{-- @include('layouts.menu')
 
     <div class="">
         <div class="row">
-            {{--    Sidebar--}}
+            --}}{{--    Sidebar--}}{{--
 
-{{--            @include('layouts.sidebar')--}}
+--}}{{--            @include('layouts.sidebar')--}}{{--
 
             <div class="col-2 myfond3 mycolor ">
 
@@ -29,19 +32,19 @@
                     </div>
                 </nav>
             </div>
-
-
-            {{-- Content --}}
+--}}
+{{--
+            --}}{{-- Content --}}{{--
             <div class="col-10 myfond2">
                 <div class="body-content">
                     <h3 class="myfond2 mycolor">@yield('subtitle', '')</h3>
                     <div class="mt-5 text-danger" >
-{{--                        <img src="/uploads/images/Itkul1.jpg" alt="" class=»background» />--}}
+--}}{{--                        <img src="/uploads/images/Itkul1.jpg" alt="" class=»background» />--}}{{--
                         @yield('workingField', 'РАБОЧЕЕ ПОЛЕ')
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 
 {{--@endsection--}}

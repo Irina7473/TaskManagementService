@@ -11,7 +11,7 @@ class Team extends Model
 
     protected $fillable = [ 'field_id', 'user_id', 'role_id'];
 
-    public function user()
+   /* public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -19,7 +19,7 @@ class Team extends Model
     public function field()
     {
         return $this->belongsTo(Field::class);
-    }
+    }*/
 
 
 
