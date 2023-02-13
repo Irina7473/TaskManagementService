@@ -42,7 +42,7 @@ class TaskController extends Controller
     public function show($project_id)
     {
         $project = Project::find($project_id);
-        return view('layouts.show-tasks', [
+        return view('/dashboard', [
             'field' => Field::find($project->fields_id),
             'projects' => Project::all() -> where('fields_id', $project->fields_id),
             'tasks' => $project->tasks,

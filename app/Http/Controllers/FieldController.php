@@ -29,27 +29,30 @@ class FieldController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fieldName' => ['required', 'max:50'],
+            'fieldName' => ['required','min:3', 'max:50'],
+        ]);
+        //Field::create($request->all());
 
+        $field = Field::create([
+            'fieldName' => $request->fieldName,
         ]);
 
-        $user = Field::create([
-            'fieldName' => $request->userName,
-
-        ]);
-
-        $user->uploadFile($request->file('fond'));
-        return redirect()->route('/dashboard');
+        //$field->uploadFile($request->file('fond'));
+        return redirect()->route('fields.show-field');
         // переделать - создать рабочее пространство
     }
 
-    public function show($user_id)
+    public function show($field_id)
     {
-        $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
-        return view('layouts.show-field', [
-            'users' => User::find($user_id),
-            'fields' => Field::find($teams),
+        //$field = Field::find($field_id);
+        return view('/dashboard', [
+            'users' => Field::find($field_id)->users,
+            'field' => Field::find($field_id),
+            'projects' => Project::all()->where('fields_id', $field_id),
+           // 'selected' => $field,
         ]);
+
+
     }
 
 

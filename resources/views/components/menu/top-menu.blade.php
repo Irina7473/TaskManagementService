@@ -8,9 +8,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-{{--                    <x-menu.show-field></x-menu.show-field>--}}
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ route('fields.show', Auth::user()->id)}}">Мои рабочие пространства</a>
+                    <a class="nav-link " href="{{ route('users.show', Auth::user()->id)}}">Мои рабочие пространства</a>
                 </li>
             </ul>
 

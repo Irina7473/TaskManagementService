@@ -32,7 +32,7 @@ require __DIR__.'/auth.php';
 });*/
 
 
-//Route::resource('users', UserController::class);
+Route::resource('users', UserController::class);
 
 //Route::get('/field', [FieldController::class, 'index']);
 Route::resource('fields', FieldController::class);

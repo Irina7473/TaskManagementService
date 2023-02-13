@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-{{--        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">--}}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ asset('assets/css/mystyle.css') }}">
-        <!-- Scripts -->
-{{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
-    </head>
-    <body class="myfond1">
+    <!-- Fonts -->
+    {{--        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">--}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/mystyle.css') }}">
+    <!-- Scripts -->
+    {{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+</head>
+<body class="myfond1">
 
-{{--            @include('layouts.menu')--}}
-            <div>
-                <x-menu.top-menu></x-menu.top-menu>
-            </div>
+<div>
+    <x-menu.top-menu> </x-menu.top-menu>
+</div>
+{{--
 
-            <div class="">
-                <div class="row">
-                    {{--    Sidebar--}}
-                    <div class="col-2 myfond3 mycolor ">
-{{--                        <x-menu.sidebar></x-menu.sidebar>--}}
+<div class="row">
+    --}}{{--                        Sidebar--}}{{--
+    <div class="col-2 myfond3 mycolor ">
+--}}{{--        @yield('sidebar', 'Здесь будут ваши проекты')--}}{{--
+                                <x-menu.sidebar></x-menu.sidebar>
 
-                    </div>
+    </div>
 
-                    {{-- Content --}}
-                    <div class="col-10 myfond2">
-                        <main>
-                            {{ $slot }}
-                        </main>
-                    </div>
-                </div>
-            </div>
+    --}}{{-- Content --}}{{--
+    <div class="col-10 myfond2">
+        <h4 class="text-primary bg-light">@yield('subtitle', '') </h4>--}}
+            <main>
+                {{ $slot }}
+            </main>
+{{--    </div>--}}
+{{--</div>--}}
 
 
-    </body>
+</body>
 
-    <x-footer />
+<x-footer/>
 
 </html>
 

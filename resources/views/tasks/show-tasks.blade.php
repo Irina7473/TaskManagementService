@@ -1,8 +1,10 @@
-@extends('fields.index')
-
-@section('subtitle', 'Задачи')
+@extends('layouts.app')
 
 @section('workingField')
+    @parent
+
+{{--    @section('subtitle', 'Задачи')--}}
+
     <a href="{{route('tasks.create', $selected->id)}}" class="btn myfond3 mycolor">Добавить</a>
     <div>
         <div class="mt-3">
