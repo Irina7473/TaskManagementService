@@ -1,9 +1,9 @@
-@section('subtitle', 'Новый проект')
+@section('subtitle', 'Изменить проект')
 
 <x-app-layout>
 
-    <form action="{{route('projects.store')}}" method="POST" enctype="multipart/form-data" >
-        @csrf
+    <form action="{{route('projects.update', $project->id)}}" method="POST" enctype="multipart/form-data" >
+        @csrf  @method('PUT')
 
         <div class="input-group mb-3">
             <input type="text" name="projectName" class="form-control" placeholder="Наименование">
@@ -21,6 +21,6 @@
         <small class="d-block alert alert-danger">Ошибка в заполнении : {{ $message }}</small>
         @enderror
 
-        <button class="input-group-text" id="basic-addon2">Добавить</button>
+        <button class="input-group-text" id="basic-addon2">Сохранить</button>
     </form>
 </x-app-layout>

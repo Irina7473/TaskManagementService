@@ -19,7 +19,7 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
 
-            <input type="file" name="file_path" class="form-control">
+            <input type="file" name="fond" class="form-control">
         </div>
 
         <button class="input-group-text" id="basic-addon2">Добавить</button>

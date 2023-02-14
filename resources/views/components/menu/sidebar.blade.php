@@ -11,7 +11,7 @@
                         </li>
                     @endforeach
                     <li>
-                        <a class="nav-link mycolor" href="{{ route('projects.create')}}">Добавить</a>
+                        <a class="nav-link mycolor" href="{{ route('projects.create', $field->id)}}">Добавить</a>
                     </li>
                 </ul>
             </div>

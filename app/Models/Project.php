@@ -9,7 +9,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'projektName', 'fields_id' ];
+    protected $fillable = [ 'projectName', 'fields_id' ];
 
     public function tasks()
     {

@@ -21,6 +21,8 @@
 <div>
     <x-menu.top-menu> </x-menu.top-menu>
 </div>
+
+<h4 class="text-primary">@yield('subtitle', '')</h4>
 {{--
 
 <div class="row">

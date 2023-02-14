@@ -11,13 +11,31 @@
                             <ul class="nav flex-column ">
                                 @foreach($projects ?? [] as $project)
                                     <li class="nav-item ">
-                                        <a class="nav-link mycolor"
-                                           href="{{ route('tasks.show', $project->id)}}">{{$project->projectName}}</a>
+                                        <div class="divgroup">
+                                            <a class="nav-link mycolor"
+                                               href="{{ route('tasks.show', $project->id)}}">{{$project->projectName}}</a>
+                                            <div>
+                                                <a type="submit" class="btn btn-sm btn-info"
+                                                        href="{{route('projects.edit', $project->id)}}" >upd</a>
+                                            </div>
+                                            <form action="{{route('projects.destroy', $project->id)}}" method="POST">
+                                                @csrf @method('DELETE')
+                                                <input type="submit" class="btn btn-sm btn-danger" value="x" >
+                                            </form>
+                                        </div>
                                     </li>
+
                                 @endforeach
-                                <li>
-                                    <a class="nav-link mycolor" href="{{ route('projects.create')}}">Добавить</a>
-                                </li>
+                                @if (isset($field))
+                                    <li>
+                                        <a class="nav-link mycolor" href="{{ route('projects.create', $field->id)}}">Добавить новый
+                                            проект</a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a>Не могу добавить новый проект</a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </nav>
@@ -29,8 +47,8 @@
         <div class="col-10 myfond2">
 
             @if (isset($field))
-{{--                <h4 class="nav-link mycolor" >Здесь будут ваши задачи</h4>--}}
-{{--                @section('workingField')--}}
+                {{--                <h4 class="nav-link mycolor" >Здесь будут ваши задачи</h4>--}}
+                {{--                @section('workingField')--}}
             @else
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
