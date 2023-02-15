@@ -44,11 +44,12 @@ class FieldController extends Controller
 
     public function show($field_id)
     {
+        $fieldID=5;
         $field = Field::find($field_id);
         return view('/dashboard', [
             'users' => $field->users,
             'field' => $field,
-            'projects' => Project::all()->where('fields_id', $field_id),
+            'projects' => Project::all()->where('field_id', $field_id),
            'selected' => $field,
         ]);
 

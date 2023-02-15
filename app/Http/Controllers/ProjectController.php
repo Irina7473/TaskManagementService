@@ -15,9 +15,9 @@ class ProjectController extends Controller
         ]);*/
     }
 
-    public function create($field_id)
+    public function create()
     {
-        //$field_id = 1;
+        $field_id = 1;
         return view('projects.create-project',  [
         'field' => Field::find($field_id),
         ]);
@@ -33,10 +33,10 @@ class ProjectController extends Controller
         //$project = Project::create($request->all());
         $project = Project::create([
             'projectName' => $request->projectName,
-            'fields_id' => $request->fields_id,
+            'field_id' => $request->field_id,
         ]);
 
-        $field = Field::find($project->fields_id);
+        //$field = Field::find($project->field_id);
 
         //return redirect()->route('fields.show-field', $field);
        // return view ('fields.show-field');
@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $project = Project::find($id);
         return view('projects.edit-project', [
             'project' => $project,
-            'field' =>Field::find($project->fields_id),
+            'field' =>Field::find($project->field_id),
         ]);
     }
 

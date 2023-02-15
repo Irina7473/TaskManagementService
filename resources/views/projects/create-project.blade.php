@@ -2,15 +2,19 @@
 
 <x-app-layout>
 
-    <form action="{{route('projects.store')}}" method="POST" enctype="multipart/form-data" >
+    <h4 class="text-primary"> для рабочего пространства {{$field->fieldName}}</h4>
+
+    <form action="{{route('projects.store', $field->id)}}" method="POST" enctype="multipart/form-data" >
         @csrf
+
+{{--        <h4 name="field_id" class="text-primary"> {{$field->id}}</h4>--}}
 
         <div class="input-group mb-3">
             <input type="text" name="projectName" class="form-control" placeholder="Наименование">
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" name="fields_id" class="form-control" value="{{$field->id}}">
+            <input type="text" name="field_id" class="form-control" value="{{$field->id}}">
         </div>
 
         {{--<div class="input-group mb-3" >

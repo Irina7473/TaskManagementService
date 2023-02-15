@@ -6,6 +6,7 @@
             @if (isset($field))
                 <div class="col-2 mycolor ">
                     <h4 class="nav-link mycolor" href="#">{{$field->fieldName}}</h4>
+                    <h4 class="nav-link mycolor" href="#">{{$fieldID}}</h4>
                     <nav class="navbar navbar-expand-lg ">
                         <div class="collapse navbar-collapse">
                             <ul class="nav flex-column ">
@@ -55,6 +56,7 @@
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6 bg-white border-b border-gray-200">
                                 Вы вошли!
+                                {{$fieldID}}
                             </div>
                         </div>
                     </div>
