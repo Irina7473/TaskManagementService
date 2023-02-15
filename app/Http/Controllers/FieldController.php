@@ -12,49 +12,93 @@ class FieldController extends Controller
 {
     public function index($field_id)
     {
-        //$field_id=1;      //поле для открытия
-        /*return view('/dashboard', [
-            'field' => Field::find($field_id),
-            'projects' => Project::all()->where('fields_id', $field_id)
-        ]);*/
+        //
     }
 
-
+    //работает
     public function create()
     {
-        return view('fields.create-field');
+        return view('fields.create-field', [
+            'users' => User::all(),
+            ]);
     }
 
+    //работает - добавить про картинки
     public function store(Request $request)
     {
         $request->validate([
             'fieldName' => ['required','min:3', 'max:50'],
         ]);
-        Field::create($request->all());
+        //Field::create($request->all());
 
         $field = Field::create([
             'fieldName' => $request->fieldName,
         ]);
 
-        $field->uploadFile($request->file('fond'));
-        return redirect()->route('fields.show-field');
-        //return view ('fields.show-field');
-        // переделать - создать рабочее пространство
+        //$field->uploadFile($request->file('fond'));
+
+        $user_id = $request->user_id;
+        Team::create([
+            'field_id' => $field->id,
+            'user_id' => $user_id,
+            'role_id' => 2,
+        ]);
+
+        $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
+
+        return view ('fields.show-field', [
+            'user' => User::find($user_id),
+            'fields' => Field::find($teams),
+        ]);
+
     }
 
+    //работает
     public function show($field_id)
     {
-        $fieldID=5;
         $field = Field::find($field_id);
         return view('/dashboard', [
             'users' => $field->users,
             'field' => $field,
             'projects' => Project::all()->where('field_id', $field_id),
-           'selected' => $field,
+            'selected' => $field,
+            'fieldID'=> $field->id,
         ]);
-
-
     }
 
+    //работает
+    public function edit($id)
+    {
+        return view('fields.edit-field', [
+            'field' =>Field::find($id),
+        ]);
+    }
+
+    //работает - добавить про картинки
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'fieldName' => ['required', 'min:3', 'max:50'],
+        ]);
+
+        $field = Field::find($id);
+        $field -> update($request->all());
+
+        return back();
+    }
+
+    //НЕ ПОЛЬЗОВАТЬСЯ -доделать с каскадным удалением
+    public function destroy($id)
+    {
+        /*
+        $field = Field::find($id);
+        $teams = Team::all()->where('field_id', $id);
+
+        $teams->delete();  //не работает
+        $field->delete();
+
+        return back();
+        */
+    }
 
 }

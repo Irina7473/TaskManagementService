@@ -6,6 +6,10 @@
         @csrf
 
         <div class="input-group mb-3">
+            <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
+        </div>
+
+        <div class="input-group mb-3">
             <input type="text" name="fieldName" class="form-control" placeholder="Наименование">
         </div>
 

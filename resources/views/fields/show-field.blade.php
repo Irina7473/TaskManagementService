@@ -2,7 +2,7 @@
     <div class="row">
         {{--   Sidebar--}}
         <div class="col-2 myfond3 mycolor ">
-            <x-menu.sidebar> </x-menu.sidebar>
+            <x-menu.sidebar></x-menu.sidebar>
 
         </div>
 
@@ -17,8 +17,18 @@
                     @if($fields->count() > 0)
                         <div class="">
                             @foreach($fields ?? [] as $field)
-                                <div>
+                                <div class="divgroup">
                                     <a href="{{ route('fields.show',$field->id)}}">{{$field->fieldName}}  {{$field->id}}</a>
+
+                                    <div>
+                                        <a type="submit" class="btn btn-sm btn-info"
+                                           href="{{route('fields.edit', $field->id)}}">upd</a>
+                                    </div>
+
+                                    <form action="{{route('fields.destroy', $field->id)}}" method="POST">
+                                        @csrf @method('DELETE')
+                                        <input type="submit" class="btn btn-sm btn-danger" value="x">
+                                    </form>
                                 </div>
                             @endforeach
 
@@ -36,5 +46,6 @@
                 <a class="" href="{{ route('fields.create') }}">Создать новое рабочее пространство</a>
             </div>
         </div>
+    </div>
 </x-app-layout>
 
