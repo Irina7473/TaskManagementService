@@ -23,7 +23,7 @@ class FieldController extends Controller
             ]);
     }
 
-    //работает - добавить про картинки
+    //работает - добавить про картинки и команду
     public function store(Request $request)
     {
         $request->validate([
@@ -41,6 +41,7 @@ class FieldController extends Controller
         Team::create([
             'field_id' => $field->id,
             'user_id' => $user_id,
+            // по умолчанию создает поля менеждер - продумать связь с БД
             'role_id' => 2,
         ]);
 
@@ -54,19 +55,6 @@ class FieldController extends Controller
     }
 
     //работает
-    public function show($field_id)
-    {
-        $field = Field::find($field_id);
-        return view('/dashboard', [
-            'users' => $field->users,
-            'field' => $field,
-            'projects' => Project::all()->where('field_id', $field_id),
-            'selected' => $field,
-            'fieldID'=> $field->id,
-        ]);
-    }
-
-    //работает
     public function edit($id)
     {
         return view('fields.edit-field', [
@@ -74,7 +62,8 @@ class FieldController extends Controller
         ]);
     }
 
-    //работает - добавить про картинки
+    //работает - добавить про картинки и команду
+    //добавление участников через приглашение на почту
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -87,18 +76,31 @@ class FieldController extends Controller
         return back();
     }
 
-    //НЕ ПОЛЬЗОВАТЬСЯ -доделать с каскадным удалением
+    //НЕ ПОЛЬЗОВАТЬСЯ! -доделать с каскадным удалением
     public function destroy($id)
     {
         /*
         $field = Field::find($id);
         $teams = Team::all()->where('field_id', $id);
 
-        $teams->delete();  //не работает
+        $teams->delete();  //не работает - выдает ошибку
         $field->delete();
 
         return back();
         */
+    }
+
+    //работает
+    public function show($field_id)
+    {
+        $field = Field::find($field_id);
+        return view('/dashboard', [
+            'users' => $field->users,
+            'field' => $field,
+            'projects' => Project::all()->where('field_id', $field_id),
+            'selected' => $field,
+            'fieldID'=> $field->id,
+        ]);
     }
 
 }

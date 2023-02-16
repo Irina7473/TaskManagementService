@@ -9,9 +9,9 @@
             <input type="text" name="fieldName" class="form-control" placeholder="{{$field->fieldName}}">
         </div>
 
-        {{--<div class="input-group mb-3" >
-            <textarea name="" class="form-control" placeholder="Пригласить участников - сделать!!"></textarea>
-        </div>--}}
+        <div class="input-group mb-3" >
+            <textarea name="" class="form-control" placeholder="Пригласить участников - сделать отправку приглашения на почту!!"></textarea>
+        </div>
 
         <button class="input-group-text" id="basic-addon2">Сохранить</button>
     </form>

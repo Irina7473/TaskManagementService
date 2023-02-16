@@ -15,13 +15,13 @@ class ProjectController extends Controller
         ]);*/
     }
 
-    public function create()
+    //работает
+    public function create(Request $request)
     {
-        $field_id = 1;
+        $field_id = $request->field_id;
         return view('projects.create-project',  [
-        'field' => Field::find($field_id),
+            'field' => Field::find($field_id),
         ]);
-       // return view('projects.create-project');
     }
 
     public function store(Request $request)

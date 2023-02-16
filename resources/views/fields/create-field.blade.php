@@ -13,12 +13,8 @@
             <input type="text" name="fieldName" class="form-control" placeholder="Наименование">
         </div>
 
-        <div class="input-group mb-3" >
-            <textarea name="" class="form-control" placeholder="Пригласить участников - сделать!!"></textarea>
-        </div>
-
         <div class="mb-3">
-            <label class="form-label">Загрузка темы</label>
+            <label class="form-label">Загрузка фона рабочего пространства</label>
             <div class="spinner-border text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>

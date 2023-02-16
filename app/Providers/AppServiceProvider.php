@@ -27,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
         //
         //view()->share('newUsersThisWeekCount',
         //            User::where('created_at', '>', now()->subDays(7))->count());
-        view()->share('fieldID', '2');
+        view()->share('fieldID', '-1');
     }
 }

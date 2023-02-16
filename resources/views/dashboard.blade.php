@@ -5,8 +5,9 @@
         <div class="col-2 myfond3 mycolor ">
             @if (isset($field))
                 <div class="col-2 mycolor ">
-                    <h4 class="nav-link mycolor" href="#">{{$field->fieldName}}</h4>
-                    <h4 class="nav-link mycolor" href="#">{{$fieldID}}</h4>
+                    <h4 class="nav-link mycolor">{{$field->fieldName}}</h4>
+                    <a class="nav-link mycolor" href="{{route('teams.show', $field->id)}}">Команда</a>
+
                     <nav class="navbar navbar-expand-lg ">
                         <div class="collapse navbar-collapse">
                             <ul class="nav flex-column ">
@@ -17,11 +18,11 @@
                                                href="{{ route('tasks.show', $project->id)}}">{{$project->projectName}}</a>
                                             <div>
                                                 <a type="submit" class="btn btn-sm btn-info"
-                                                        href="{{route('projects.edit', $project->id)}}" >upd</a>
+                                                   href="{{route('projects.edit', $project->id)}}">upd</a>
                                             </div>
                                             <form action="{{route('projects.destroy', $project->id)}}" method="POST">
                                                 @csrf @method('DELETE')
-                                                <input type="submit" class="btn btn-sm btn-danger" value="x" >
+                                                <input type="submit" class="btn btn-sm btn-danger" value="x">
                                             </form>
                                         </div>
                                     </li>
@@ -29,8 +30,14 @@
                                 @endforeach
                                 @if (isset($field))
                                     <li>
-                                        <a class="nav-link mycolor" href="{{ route('projects.create', $field->id)}}">Добавить новый
-                                            проект</a>
+                                        <form action="{{route('projects.create')}}" method="GET">
+                                            @csrf
+                                            <div class="divgroup">
+                                                <a>Новый проект</a>
+                                                <input type="hidden" name="field_id" value="{{$field->id}}">
+                                                <button class="btn btn-sm btn-info" id="basic-addon2">Добавить</button>
+                                            </div>
+                                        </form>
                                     </li>
                                 @else
                                     <li>
