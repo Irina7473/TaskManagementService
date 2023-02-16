@@ -16,14 +16,12 @@ class FieldController extends Controller
     }
 
     //работает
-    public function create()
+    public function create(Request $request)
     {
-        return view('fields.create-field', [
-            'users' => User::all(),
-            ]);
+        return view('fields.create-field');
     }
 
-    //работает - добавить про картинки и команду
+    //работает - добавить про картинки
     public function store(Request $request)
     {
         $request->validate([
@@ -46,12 +44,10 @@ class FieldController extends Controller
         ]);
 
         $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
-
         return view ('fields.show-field', [
             'user' => User::find($user_id),
             'fields' => Field::find($teams),
         ]);
-
     }
 
     //работает
@@ -62,8 +58,9 @@ class FieldController extends Controller
         ]);
     }
 
-    //работает - добавить про картинки и команду
+    //работает - добавить про картинки
     //добавление участников через приглашение на почту
+    //удаление участников
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -73,7 +70,12 @@ class FieldController extends Controller
         $field = Field::find($id);
         $field -> update($request->all());
 
-        return back();
+        $user_id = $request->user_id;
+        $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
+        return view ('fields.show-field', [
+            'user' => User::find($user_id),
+            'fields' => Field::find($teams),
+        ]);
     }
 
     //НЕ ПОЛЬЗОВАТЬСЯ! -доделать с каскадным удалением
@@ -99,7 +101,6 @@ class FieldController extends Controller
             'field' => $field,
             'projects' => Project::all()->where('field_id', $field_id),
             'selected' => $field,
-            'fieldID'=> $field->id,
         ]);
     }
 

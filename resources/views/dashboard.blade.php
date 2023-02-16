@@ -6,6 +6,7 @@
             @if (isset($field))
                 <div class="col-2 mycolor ">
                     <h4 class="nav-link mycolor">{{$field->fieldName}}</h4>
+        {{--  Сделать изменение состава команды--}}
                     <a class="nav-link mycolor" href="{{route('teams.show', $field->id)}}">Команда</a>
 
                     <nav class="navbar navbar-expand-lg ">

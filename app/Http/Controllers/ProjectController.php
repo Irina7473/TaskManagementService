@@ -10,9 +10,7 @@ class ProjectController extends Controller
 {
     public function  index()
     {
-        /*return view('fields.index', [
-            'projects' => Project::all(),
-        ]);*/
+        //
     }
 
     //работает
@@ -24,29 +22,29 @@ class ProjectController extends Controller
         ]);
     }
 
+    //работает
     public function store(Request $request)
     {
         $request->validate([
             'projectName' => ['required','min:3', 'max:50'],
 
         ]);
-        //$project = Project::create($request->all());
-        $project = Project::create([
+
+        $field_id = $request->field_id;
+        Project::create([
             'projectName' => $request->projectName,
-            'field_id' => $request->field_id,
+            'field_id' => $field_id,
         ]);
 
-        //$field = Field::find($project->field_id);
-
-        //return redirect()->route('fields.show-field', $field);
-       // return view ('fields.show-field');
-        /*return view('/dashboard',  [
+        $field = Field::find($field_id);
+        return view('/dashboard', [
+            'users' => $field->users,
             'field' => $field,
-
-        ]);*/
-        return back();
+            'projects' => Project::all()->where('field_id', $field_id),
+        ]);
     }
 
+    //работает
     public function edit($id)
     {
         $project = Project::find($id);
@@ -56,6 +54,7 @@ class ProjectController extends Controller
         ]);
     }
 
+    //работает
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -65,14 +64,26 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $project -> update($request->all());
 
-        return back();
+        $field_id = $project->field_id;
+        $field = Field::find($field_id);
+        return view('/dashboard', [
+            'users' => $field->users,
+            'field' => $field,
+            'projects' => Project::all()->where('field_id', $field_id),
+        ]);
     }
 
+    //работает
     public function destroy($id)
     {
         $project = Project::find($id);
         $project->delete();
 
-        return back();
+        $field_id = $project->field_id;
+        return view('/dashboard', [
+            'users' => Field::find($field_id)->users,
+            'field' => Field::find($field_id),
+            'projects' => Project::all()->where('field_id', $field_id),
+        ]);
     }
 }
