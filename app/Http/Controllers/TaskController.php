@@ -9,73 +9,72 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function  index()
+    public function index()
     {
         //
     }
 
-    public function create()
+    //работает
+    public function create(Request $request)
     {
-        return view('tasks.create-task');
-        /*$project = Project::find($project_id);
-        return view('tasks.create-task',[
-            'projects' => Project::all() -> where('fields_id', $project->fields_id),
-            'tasks' => $project->tasks,
-        ]);*/
+        $project_id = $request->field_id;
+        return view('tasks.create-task',  [
+            'project' => Project::find($project_id),
+        ]);
     }
 
+    //работает
     public function store(Request $request)
     {
         $request->validate([
             'taskName' => ['required', 'max:50'],
+            'description' => ['required'],
         ]);
 
-        $task = Task::create([
+        $project_id = $request->project_id;
+        Task::create([
             'taskName' => $request->taskName,
-            'project_id' => $request->project_id
+            'project_id' => $project_id,
+            'description' => $request->description,
         ]);
 
-        return redirect()->route('layouts.show-tasks');
-
+        return redirect()->route('projects.show', $project_id);
     }
 
-    public function show($project_id)
-    {
-        $project = Project::find($project_id);
-        return view('/dashboard', [
-            'field' => Field::find($project->fields_id),
-            'projects' => Project::all() -> where('fields_id', $project->fields_id),
-            'tasks' => $project->tasks,
-            'selected' => $project,
-        ]);
-    }
-
+    //работает
     public function edit($id)
     {
-//        $task = Task::find($id);
-        return view('tasks.update-tasks', [
-            'tasks' => Task::find($id),
-            'projects' => Project::projekt(),
+        $task = Task::find($id);
+        return view('tasks.edit-task', [
+            'task' => $task,
+            'project' => Project::find($task->project_id),
         ]);
     }
 
+    //работает
     public function update(Request $request, $id)
     {
         $request->validate([
-            'project' => ['required'],
-            'taskName' => ['required', 'max:100'],
-            'content' => ['required', 'max:1000'],
+            'taskName' => ['required', 'max:50'],
+            'description' => ['required'],
         ]);
+
         $task = Task::find($id);
         $task->update($request->all());
-        return back();
-        //return redirect()->route('task.index');
+
+        $project_id = $task->project_id;
+        return redirect()->route('projects.show', $project_id);
     }
 
+    //работает
     public function destroy($id)
     {
         $task = Task::find($id);
+        $project_id = $task->project_id;
         $task->delete();
-        return back();
+        return redirect()->route('projects.show', $project_id);
     }
+
+
+
 }

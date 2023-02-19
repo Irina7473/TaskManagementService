@@ -27,7 +27,6 @@ class ProjectController extends Controller
     {
         $request->validate([
             'projectName' => ['required','min:3', 'max:50'],
-
         ]);
 
         $field_id = $request->field_id;
@@ -36,12 +35,7 @@ class ProjectController extends Controller
             'field_id' => $field_id,
         ]);
 
-        $field = Field::find($field_id);
-        return view('/dashboard', [
-            'users' => $field->users,
-            'field' => $field,
-            'projects' => Project::all()->where('field_id', $field_id),
-        ]);
+        return redirect()->route('fields.show', $field_id);
     }
 
     //работает
@@ -65,12 +59,7 @@ class ProjectController extends Controller
         $project -> update($request->all());
 
         $field_id = $project->field_id;
-        $field = Field::find($field_id);
-        return view('/dashboard', [
-            'users' => $field->users,
-            'field' => $field,
-            'projects' => Project::all()->where('field_id', $field_id),
-        ]);
+        return redirect()->route('fields.show', $field_id);
     }
 
     //работает
@@ -80,10 +69,18 @@ class ProjectController extends Controller
         $project->delete();
 
         $field_id = $project->field_id;
-        return view('/dashboard', [
-            'users' => Field::find($field_id)->users,
-            'field' => Field::find($field_id),
-            'projects' => Project::all()->where('field_id', $field_id),
+        return redirect()->route('fields.show', $field_id);
+    }
+
+    public function show($project_id)
+    {
+        $project = Project::find($project_id);
+        //$field = Field::find($project->fields_id);
+        return view('projects.show-project', [
+            'field' => Field::find($project->fields_id),
+            'projects' => Project::all() -> where('fields_id', $project->fields_id),
+            'tasks' => $project->tasks,
+            'selected' => $project,
         ]);
     }
 }

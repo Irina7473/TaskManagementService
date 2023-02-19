@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class AddDeadlineToTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->string('taskName', 50);
-            $table->integer('project_id');
-            $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->dateTime('deadline')->nullable()->after('description');
+            $table->integer('label_id')->unique()->after('deadline')->change();
         });
-
     }
 
     /**
@@ -30,8 +26,8 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::table('tasks', function (Blueprint $table) {
+            //
+        });
     }
-
-
 }

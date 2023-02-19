@@ -44,7 +44,6 @@ Route::resource('roles', RoleController::class);
 Route::resource('teams', TeamController::class);
 
 //Route::get('/project', [ProjectController::class, 'index']);
-Route::post('/project/{$field_id}', [ProjectController::class, 'store']);
 Route::resource('projects', ProjectController::class);
 
 //Route::get('/task', [TaskController::class, 'index']);

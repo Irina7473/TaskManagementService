@@ -16,7 +16,7 @@
                                     <li class="nav-item ">
                                         <div class="divgroup">
                                             <a class="nav-link mycolor"
-                                               href="{{ route('tasks.show', $project->id)}}">{{$project->projectName}}</a>
+                                               href="{{ route('projects.show', $project->id)}}">{{$project->projectName}}</a>
                                             <div>
                                                 <a type="submit" class="btn btn-sm btn-info"
                                                    href="{{route('projects.edit', $project->id)}}">upd</a>
@@ -56,15 +56,16 @@
         <div class="col-10 myfond2">
 
             @if (isset($field))
-                {{--                <h4 class="nav-link mycolor" >Здесь будут ваши задачи</h4>--}}
-                {{--                @section('workingField')--}}
+                                <h4 class="nav-link mycolor" >Здесь будут ваши задачи</h4>
+
             @else
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div class="p-6 bg-white border-b border-gray-200">
                                 Вы вошли!
-                                {{$fieldID}}
+                                @section('workingField')
+                                @show
                             </div>
                         </div>
                     </div>
