@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
@@ -48,3 +49,5 @@ Route::resource('projects', ProjectController::class);
 
 //Route::get('/task', [TaskController::class, 'index']);
 Route::resource('tasks', TaskController::class);
+
+Route::resource('comments', CommentController::class);

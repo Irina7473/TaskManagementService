@@ -8,18 +8,14 @@
             <x-menu.sidebar >{{$field}}</x-menu.sidebar>
             {{--            @include('components.menu.sidebar', ['field' => $field])--}}
 
-
         </div>
 
         {{-- Content --}}
         <div class="col-10 myfond2">
 
-            {{--            <a href="{{route('tasks.create', $selected->id)}}" class="btn myfond3 mycolor">Добавить задачу</a>--}}
-
             <form action="{{route('tasks.create')}}" method="GET">
                 @csrf
                 <div class="divgroup">
-                    {{--                    <a>Новый проект</a>--}}
                     <input type="hidden" name="field_id" value="{{$selected->id}}">
                     <button class="btn btn-sm btn-info" id="basic-addon2">Добавить задачу</button>
                 </div>
@@ -34,7 +30,7 @@
                             <tr>
                                 <th>Наименование</th>
                                 <th>Описание</th>
-                                <th>Файлы</th>
+                                <th>Срок</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -42,13 +38,15 @@
                                 <tr>
                                     <td>{{$task->taskName}}</td>
                                     <td>{{$task->description}}</td>
-                                    <td>
-                                        {{--            <div><audio id="audio_load" src="/{{$task->file_path}}" controls></audio></div>--}}
-                                        {{--                <td>{{$task->getFile()}}</td>--}}
-                                    </td>
+                                    <td>{{$task->deadline}}</td>
                                     <td>
 
                                         <div class="divgroup">
+
+                                            <div>
+                                                <a type="submit" class="btn btn-sm btn-primary"
+                                                   href="{{route('tasks.show', $task->id)}}">Посмотреть</a>
+                                            </div>
 
                                             <div>
                                                 <a type="submit" class="btn btn-sm btn-info"

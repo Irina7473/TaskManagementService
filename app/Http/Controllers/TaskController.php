@@ -75,6 +75,19 @@ class TaskController extends Controller
         return redirect()->route('projects.show', $project_id);
     }
 
+    public function show($task_id)
+    {
+        $task = Task::find($task_id);
+        $project = $task->project();
+        return view('tasks.show-task', [
+//            'field' => $project->field(),
+            'project' => $project,
+            'task' => $task,
+            'selected' => $task,
+            'comments' => $task->comments(),
+            'files' => $task->files(),
+        ]);
+    }
 
 
 }
