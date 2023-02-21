@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FieldController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TaskController;
@@ -51,3 +52,5 @@ Route::resource('projects', ProjectController::class);
 Route::resource('tasks', TaskController::class);
 
 Route::resource('comments', CommentController::class);
+
+Route::resource('files', FileController::class);

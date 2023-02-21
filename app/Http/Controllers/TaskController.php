@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Field;
+use App\Models\File;
 use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -86,7 +87,7 @@ class TaskController extends Controller
             'task' => $task,
 //            'selected' => $task,
             'comments' => Comment::all() -> where('task_id', $task_id),
-            'files' => $task->files(),
+            'files' => File::all() -> where('task_id', $task_id),
         ]);
     }
 

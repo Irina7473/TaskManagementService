@@ -22,6 +22,8 @@
                                 <th>Наименование</th>
                                 <th>Метка</th>
                                 <th>Срок</th>
+                                <th>Вложения</th>
+                                <th>Комментарии</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -30,6 +32,8 @@
                                     <td>{{$task->taskName}}</td>
                                     <td>Здесь будет метка</td>
                                     <td>{{$task->deadline}}</td>
+                                    <td>{{$task->files()->count()}}</td>
+                                    <td>{{$task->comments()->count()}}</td>
                                     <td>
 
                                         <div class="divgroup">

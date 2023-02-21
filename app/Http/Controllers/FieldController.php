@@ -69,13 +69,16 @@ class FieldController extends Controller
 
         $field = Field::find($id);
         $field -> update($request->all());
+        $field -> uploadFile ($request->file('fond'));
 
         $user_id = $request->user_id;
-        $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
+        /*$teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
         return view ('fields.show-field', [
             'user' => User::find($user_id),
             'fields' => Field::find($teams),
-        ]);
+        ]);*/
+
+        return redirect()->route('users.show', $user_id);
     }
 
     //НЕ ПОЛЬЗОВАТЬСЯ! -доделать с каскадным удалением
@@ -84,7 +87,7 @@ class FieldController extends Controller
         /*
         $field = Field::find($id);
         $teams = Team::all()->where('field_id', $id);
-
+        $field->removeFile();
         $teams->delete();  //не работает - выдает ошибку
         $field->delete();
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Field extends Model
 {
@@ -22,20 +23,20 @@ class Field extends Model
         return $this->belongsTo(User::class);
     }
 
-
     public  function uploadFile ($file)
     {
         if ($file == null) return;
 
         $ext = $file->extension();
-        if (! in_array($ext, ['jpg'])) return;
+        if (! in_array($ext, ['jpg', 'png'])) return;
 
-        $fileName = 'fond-' . Str::random(5) . '.' . $ext;
+        //$fileName = basename($file,  PATHINFO_FILENAME) . '.' . $ext;
+        $fileName = 'fild-' . $this->id  . '-'. Str::random(5) . '.' . $ext;
         $path = 'images/';
         $file->storeAs($path, $fileName, 'uploads');
 
         $this->removeFile();
-        $this->file_path = 'uploads/' . $path . $fileName;
+        $this->fond = 'uploads/' . $path . $fileName;
         $this->save();
     }
 
@@ -50,10 +51,21 @@ class Field extends Model
 
     public  function getFile()
     {
-        if ($this->avatar) {
+        if ($this->fond) {
             return asset($this->fond);
         }
-        return asset('assets/file/empty.jpg');
+        return  false;
+        //return asset('uploads/file/empty.jpg'); //заглушка
+    }
+
+    public  function getFileName()
+    {
+        if ($this->fond) {
+            $url = asset($this->fond);
+            $fileName = basename($url);
+            return $fileName;
+        }
+        return  false;
     }
 
 }
