@@ -1,3 +1,4 @@
+{{--
 @section('subtitle', 'Новая задача')
 
 <x-app-layout>
@@ -16,6 +17,11 @@
         </div>
 
         <div class="input-group mb-3">
+            <input name="deadline" class="form-control" placeholder="Срок"></input>
+            <input name="deadline" class="form-control" placeholder="Метка"></input>
+        </div>
+
+        <div class="input-group mb-3">
             <textarea name="description" class="form-control" placeholder="Описание"></textarea>
         </div>
 
@@ -24,3 +30,4 @@
     </form>
 
 </x-app-layout>
+--}}

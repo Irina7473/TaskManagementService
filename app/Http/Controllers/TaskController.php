@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Field;
 use App\Models\Project;
 use App\Models\Task;
@@ -28,14 +29,15 @@ class TaskController extends Controller
     {
         $request->validate([
             'taskName' => ['required', 'max:50'],
-            'description' => ['required'],
+//            'deadline' => ['required'],
+//            'description' => ['required'],
         ]);
 
         $project_id = $request->project_id;
         Task::create([
             'taskName' => $request->taskName,
             'project_id' => $project_id,
-            'description' => $request->description,
+//            'deadline' => $request->deadline,
         ]);
 
         return redirect()->route('projects.show', $project_id);
@@ -56,7 +58,6 @@ class TaskController extends Controller
     {
         $request->validate([
             'taskName' => ['required', 'max:50'],
-            'description' => ['required'],
         ]);
 
         $task = Task::find($id);
@@ -83,8 +84,8 @@ class TaskController extends Controller
 //            'field' => $project->field(),
             'project' => $project,
             'task' => $task,
-            'selected' => $task,
-            'comments' => $task->comments(),
+//            'selected' => $task,
+            'comments' => Comment::all() -> where('task_id', $task_id),
             'files' => $task->files(),
         ]);
     }

@@ -1,3 +1,4 @@
+{{--
 @section('subtitle', 'Изменение задачи')
 
 <x-app-layout>
@@ -19,3 +20,4 @@
     </form>
 
 </x-app-layout>
+--}}

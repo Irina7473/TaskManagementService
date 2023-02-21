@@ -1,25 +1,16 @@
-
 <x-app-layout>
     <div class="row">
         {{--   Sidebar--}}
         <div class="col-2 myfond3 mycolor ">
 
             {{--            <x-alert type="error" :message="$message"/>--}}
-            <x-menu.sidebar >{{$field}}</x-menu.sidebar>
+            <x-menu.sidebar>{{$field}}</x-menu.sidebar>
             {{--            @include('components.menu.sidebar', ['field' => $field])--}}
 
         </div>
 
         {{-- Content --}}
         <div class="col-10 myfond2">
-
-            <form action="{{route('tasks.create')}}" method="GET">
-                @csrf
-                <div class="divgroup">
-                    <input type="hidden" name="field_id" value="{{$selected->id}}">
-                    <button class="btn btn-sm btn-info" id="basic-addon2">Добавить задачу</button>
-                </div>
-            </form>
 
             <div>
                 <div class="mt-3">
@@ -29,7 +20,7 @@
                             <thead>
                             <tr>
                                 <th>Наименование</th>
-                                <th>Описание</th>
+                                <th>Метка</th>
                                 <th>Срок</th>
                             </tr>
                             </thead>
@@ -37,20 +28,15 @@
                             @foreach($tasks as $task)
                                 <tr>
                                     <td>{{$task->taskName}}</td>
-                                    <td>{{$task->description}}</td>
+                                    <td>Здесь будет метка</td>
                                     <td>{{$task->deadline}}</td>
                                     <td>
 
                                         <div class="divgroup">
 
                                             <div>
-                                                <a type="submit" class="btn btn-sm btn-primary"
-                                                   href="{{route('tasks.show', $task->id)}}">Посмотреть</a>
-                                            </div>
-
-                                            <div>
                                                 <a type="submit" class="btn btn-sm btn-info"
-                                                   href="{{route('tasks.edit', $task->id)}}">Изменить</a>
+                                                   href="{{route('tasks.show', $task->id)}}">Открыть</a>
                                             </div>
 
                                             <form action="{{route('tasks.destroy', $task->id)}}" method="POST">
@@ -70,6 +56,18 @@
                             <h3>Записей не найдено</h3>
                         </div>
                     @endif
+
+                    <form action="{{route('tasks.store', $selected->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="input-group mb-3">
+                            <input name="taskName" class="form-control" placeholder="Заголовок">
+                            <input name="label_id" class="form-control" placeholder="Метка">
+                            <input name="deadline" class="form-control" placeholder="Срок">
+                            <input type="hidden" name="project_id" value="{{$selected->id}}">
+                            <button class=" btn-primary" id="basic-addon2">Добавить задачу</button>
+                        </div>
+                    </form>
 
                 </div>
             </div>
