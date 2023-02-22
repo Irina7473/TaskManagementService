@@ -21,19 +21,18 @@ class FieldController extends Controller
         return view('fields.create-field');
     }
 
-    //работает - добавить про картинки
+    //работает
     public function store(Request $request)
     {
         $request->validate([
             'fieldName' => ['required','min:3', 'max:50'],
         ]);
-        //Field::create($request->all());
 
         $field = Field::create([
             'fieldName' => $request->fieldName,
         ]);
 
-        //$field->uploadFile($request->file('fond'));
+        $field->uploadFile($request->file('fond'));
 
         $user_id = $request->user_id;
         Team::create([
@@ -43,11 +42,7 @@ class FieldController extends Controller
             'role_id' => 2,
         ]);
 
-        $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
-        return view ('fields.show-field', [
-            'user' => User::find($user_id),
-            'fields' => Field::find($teams),
-        ]);
+        return redirect()->route('users.show', $user_id);
     }
 
     //работает
@@ -68,16 +63,13 @@ class FieldController extends Controller
         ]);
 
         $field = Field::find($id);
-        $field -> update($request->all());
+
+        $field -> update([
+            'fieldName' => $request->fieldName,
+        ]);
         $field -> uploadFile ($request->file('fond'));
 
         $user_id = $request->user_id;
-        /*$teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
-        return view ('fields.show-field', [
-            'user' => User::find($user_id),
-            'fields' => Field::find($teams),
-        ]);*/
-
         return redirect()->route('users.show', $user_id);
     }
 

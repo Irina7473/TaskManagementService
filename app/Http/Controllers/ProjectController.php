@@ -75,9 +75,9 @@ class ProjectController extends Controller
     public function show($project_id)
     {
         $project = Project::find($project_id);
-        //$field = Field::find($project->fields_id);
+        $field = Field::find($project->field_id);
         return view('projects.show-project', [
-            'field' => Field::find($project->fields_id),
+            'field' => $field,
             'projects' => Project::all() -> where('fields_id', $project->fields_id),
             'tasks' => $project->tasks,
             'selected' => $project,

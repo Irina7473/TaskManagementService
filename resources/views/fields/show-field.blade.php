@@ -18,13 +18,11 @@
                         <div class="">
                             @foreach($fields ?? [] as $field)
                                 <div class="divgroup">
-                                    <a href="{{ route('fields.show',$field->id)}}">{{$field->fieldName}}  {{$field->id}}</a>
-
+                                    <a href="{{ route('fields.show',$field->id)}}">{{$field->fieldName}}</a>
                                     <div>
                                         <a type="submit" class="btn btn-sm btn-info"
                                            href="{{route('fields.edit', $field->id)}}">upd</a>
                                     </div>
-
                                     <form action="{{route('fields.destroy', $field->id)}}" method="POST">
                                         @csrf @method('DELETE')
                                         <input type="submit" class="btn btn-sm btn-danger" value="x">
@@ -43,7 +41,35 @@
                         <h3>Ошибка: полученное значение не итерируется</h3>
                     </div>
                 @endif
-                <a class="" href="{{ route('fields.create') }}">Создать новое рабочее пространство</a>
+
+{{--                Создание нового рабочего пространства--}}
+
+                <form action="{{route('fields.store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="input-group mt-5">
+                        <label class="text-primary">Создать новое рабочее пространство</label>
+                        <div>
+                            <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <input type="text" name="fieldName" class="form-control" placeholder="Наименование">
+                        </div>
+
+                        <label class="text-primary">Загрузка фона рабочего пространства</label>
+                        <div class="divgroup mb-3">
+
+                            <div class="text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+
+                            <input type="file" name="fond" class="form-control">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-sm btn-info" id="basic-addon2">Сохранить</button>
+                </form>
+
             </div>
         </div>
     </div>

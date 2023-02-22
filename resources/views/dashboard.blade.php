@@ -6,7 +6,7 @@
             @if (isset($field))
                 <div class="col-2 mycolor ">
                     <h4 class="nav-link mycolor">{{$field->fieldName}}</h4>
-        {{--  Сделать изменение состава команды--}}
+                    {{--  Сделать изменение состава команды--}}
                     <a class="nav-link mycolor" href="{{route('teams.show', $field->id)}}">Команда</a>
 
                     <nav class="navbar navbar-expand-lg ">
@@ -53,12 +53,12 @@
         </div>
 
         {{-- Content --}}
-        <div class="col-10 myfond2">
-
-            @if (isset($field))
-                                <h4 class="nav-link mycolor" >Здесь будут ваши задачи</h4>
-
-            @else
+        @if (isset($field))
+            <div class="col-10 img" style="background-image: url({{$field->getFile()}})">
+                <h4 class="nav-link mycolor">Здесь будут ваши задачи</h4>
+            </div>
+        @else
+            <div class="col-10 myfond2">
                 <div class="py-12">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -70,9 +70,9 @@
                         </div>
                     </div>
                 </div>
-            @endif
+                @endif
 
-        </div>
+            </div>
     </div>
 
 

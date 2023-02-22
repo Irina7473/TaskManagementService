@@ -1,3 +1,4 @@
+{{--
 @section('subtitle', 'Новое рабочее пространство')
 
 <x-app-layout>
@@ -27,3 +28,4 @@
 </x-app-layout>
 
 
+--}}

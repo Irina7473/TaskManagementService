@@ -28,7 +28,7 @@ class Field extends Model
         if ($file == null) return;
 
         $ext = $file->extension();
-        if (! in_array($ext, ['jpg', 'png'])) return;
+        if (! in_array($ext, ['jpg', 'jpeg', 'png'])) return;
 
         //$fileName = basename($file,  PATHINFO_FILENAME) . '.' . $ext;
         $fileName = 'fild-' . $this->id  . '-'. Str::random(5) . '.' . $ext;

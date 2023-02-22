@@ -80,9 +80,10 @@ class TaskController extends Controller
     public function show($task_id)
     {
         $task = Task::find($task_id);
-        $project = $task->project();
+        $project = Project::find($task->project_id);
+        $field = Field::find($project->field_id);
         return view('tasks.show-task', [
-//            'field' => $project->field(),
+            'field' => $field,
             'project' => $project,
             'task' => $task,
 //            'selected' => $task,

@@ -6,8 +6,11 @@
         </div>
 
         {{-- Content --}}
-        <div class="col-10 myfond2">
-
+        @if (isset($field->fond))
+            <div class="col-10 img" style="background-image: url({{$field->getFile()}})">
+                @else
+                    <div class="col-10 myfond2">
+                        @endif
 
             <form action="{{route('tasks.update', $task->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf  @method('PUT')
@@ -57,7 +60,7 @@
                         <span class="visually-hidden">Loading...</span>
                     </div>
 
-                    <input type="file" name="appFile" class="">
+                    <input type="file" name="appFile" >
 
                     <input type="hidden" name="task_id" value="{{$task->id}}">
 
