@@ -53,7 +53,6 @@ class FieldController extends Controller
         ]);
     }
 
-    //работает - добавить про картинки
     //добавление участников через приглашение на почту
     //удаление участников
     public function update(Request $request, $id)
@@ -94,7 +93,7 @@ class FieldController extends Controller
         return view('/dashboard', [
             'users' => $field->users,
             'field' => $field,
-            'projects' => Project::all()->where('field_id', $field_id),
+            'projects' => Project::all()->where('field_id', $field_id) -> sortBy('projectName'),
             'selected' => $field,
         ]);
     }

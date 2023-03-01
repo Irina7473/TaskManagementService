@@ -75,7 +75,12 @@ class User extends Authenticatable
 
     public function fields()
     {
-        return $this->belongsToMany(Field::class);
+        return $this->belongsToMany(Field::class, 'teams', 'user_id', 'field_id');
+    }
+
+    public function teams()
+    {
+        return $this->hasMany(Team::class);
     }
 
 }

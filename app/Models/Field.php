@@ -20,7 +20,7 @@ class Field extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class, 'teams', 'field_id', 'user_id');
     }
 
     public  function uploadFile ($file)

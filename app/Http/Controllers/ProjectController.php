@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Field;
 use App\Models\Project;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -78,8 +79,10 @@ class ProjectController extends Controller
         $field = Field::find($project->field_id);
         return view('projects.show-project', [
             'field' => $field,
-            'projects' => Project::all() -> where('fields_id', $project->fields_id),
-            'tasks' => $project->tasks,
+            'users' => $field -> users -> sortBy('name') ,
+            'teams' => Team::all()->where('field_id', $field->id),
+            'projects' => Project::all() -> where('fields_id', $project->fields_id) ->sortBy('projectName'),
+            'tasks' => $project->tasks->sortBy('taskName'),
             'selected' => $project,
         ]);
     }

@@ -49,7 +49,7 @@
                     <div class="input-group mt-5">
                         <label class="text-primary">Создать новое рабочее пространство</label>
                         <div>
-                            <input type="hidden" name="user_id" class="form-control" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         </div>
 
                         <div class="input-group mb-3">

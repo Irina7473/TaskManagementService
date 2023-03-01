@@ -7,6 +7,7 @@ use App\Models\Field;
 use App\Models\File;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -84,6 +85,8 @@ class TaskController extends Controller
         $field = Field::find($project->field_id);
         return view('tasks.show-task', [
             'field' => $field,
+            'users' => $field -> users -> sortBy('name') ,
+            'teams' => Team::all()->where('field_id', $field->id),
             'project' => $project,
             'task' => $task,
 //            'selected' => $task,

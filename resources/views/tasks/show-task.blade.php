@@ -30,6 +30,7 @@
                     <input type="hidden" name="project_id" value="{{$task->project_id}}">
                 </div>
 
+
                 <div class="mt-3">
                     <textarea name="description" class="form-control"
                               placeholder="Описание">{{$task->description}}</textarea>
