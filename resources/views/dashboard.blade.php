@@ -29,22 +29,19 @@
                                     </li>
 
                                 @endforeach
-                                @if (isset($field))
-                                    <li>
-                                        <form action="{{route('projects.create')}}" method="GET">
-                                            @csrf
-                                            <div class="divgroup">
-                                                <a>Новый проект</a>
-                                                <input type="hidden" name="field_id" value="{{$field->id}}">
-                                                <button class="btn btn-sm btn-info" id="basic-addon2">Добавить</button>
-                                            </div>
-                                        </form>
-                                    </li>
-                                @else
-                                    <li>
-                                        <a>Не могу добавить новый проект</a>
-                                    </li>
-                                @endif
+
+                                <li>
+                                    <form action="{{route('projects.create')}}" method="GET">
+                                        @csrf
+                                        <div class="divgroup">
+                                            <input type="hidden" name="field_id" value="{{$field->id}}">
+                                            <button class="btn btn-sm btn-info" id="basic-addon2">
+                                                Добавить новый проект
+                                            </button>
+                                        </div>
+                                    </form>
+                                </li>
+
                             </ul>
                         </div>
                     </nav>
@@ -54,25 +51,22 @@
 
         {{-- Content --}}
         @if (isset($field))
-            <div class="col-10 img" style="background-image: url({{$field->getFile()}})">
-                <h4 class="nav-link mycolor">Здесь будут ваши задачи</h4>
-            </div>
-        @else
-            <div class="col-10 myfond2">
-                <div class="py-12">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="p-6 bg-white border-b border-gray-200">
-                                Вы вошли!
-                                @section('workingField')
-                                @show
-                            </div>
+            @if (isset($field->fond))
+                <div class="col-10 img" style="background-image: url({{$field->getFile()}})">
+                    @else
+                        <div class="col-10 myfond2">
+                            @endif
+                            <h4 class="nav-link mycolor">Здесь будут ваши задачи</h4>
                         </div>
-                    </div>
-                </div>
-                @endif
+                        @else
+                            <div class="col-10 myfond2 ">
+                                <h4 class="nav-link mycolor"> Вы вошли!</h4>
+                                {{--                                @section('workingField')--}}
+                                {{--                                @show--}}
+                            </div>
+                        @endif
 
-            </div>
+                </div>
     </div>
 
 

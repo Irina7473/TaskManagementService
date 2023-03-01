@@ -14,6 +14,23 @@ class UserController extends Controller
         //
     }
 
+   /* public function show($user_id)
+    {
+        //$teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
+       // $teams = Field_user::all()->where('user_id', $user_id)->pluck('field_id');
+        $user = User::find($user_id);
+        $field_id = Team::all()->where('user_id', $user_id)->pluck('field_id');
+        $fields = null;
+        foreach ($field_id as $id)
+        //$fields = Field::all()->where('id', id);
+        //$fields = $user -> fields();
+        return view('fields.show-field', [
+            'user' => $user,
+            'fields' => $fields,
+            //'fields' =>$fields,
+        ]);
+    }*/
+
     public function show($user_id)
     {
         $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');

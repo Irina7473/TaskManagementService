@@ -73,11 +73,9 @@ class User extends Authenticatable
     }
 
 
-
     public function fields()
     {
-        return $this->belongsTo(Field::class);
+        return $this->belongsToMany(Field::class);
     }
-
 
 }

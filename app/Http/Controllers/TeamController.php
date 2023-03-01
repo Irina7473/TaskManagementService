@@ -23,11 +23,12 @@ class TeamController extends Controller
     public function show($field_id)
     {
         $field = Field::find($field_id);
-        //$users = Team::all() -> where('field_id', $field_id)->pluck('user_id');
-
-        return view('/dashboard', [
-            'teams' => Team::all() -> where('field_id', $field_id),
-            'users' => $field->users(),
+        $teams = Team::all() -> where('field_id', $field_id);
+        $users = $field -> users();
+        return view('teams.show-team', [
+            'field' => $field,
+            'teams' => $teams,
+            'users' => $users,
         ]);
     }
 }

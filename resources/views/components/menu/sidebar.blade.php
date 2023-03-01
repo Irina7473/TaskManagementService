@@ -27,17 +27,17 @@
 
                 @endforeach
 
-                <li>
-                    <form action="{{route('projects.create')}}" method="GET">
-                        @csrf
-                        <div class="divgroup">
-                            <a>Новый проект</a>
-                            <input type="hidden" name="field_id" value="{{$field->id}}">
-                            <button class="btn btn-sm btn-info" id="basic-addon2">Добавить</button>
-                        </div>
-                    </form>
-                </li>
-
+                    <li>
+                        <form action="{{route('projects.create')}}" method="GET">
+                            @csrf
+                            <div class="divgroup">
+                                <input type="hidden" name="field_id" value="{{$field->id}}">
+                                <button class="btn btn-sm btn-info" id="basic-addon2">
+                                    Добавить новый проект
+                                </button>
+                            </div>
+                        </form>
+                    </li>
 
             </ul>
         </div>
