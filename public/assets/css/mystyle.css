@@ -25,3 +25,14 @@ body{
     display: flex;
     flex-direction: row;
 }
+
+.myimg{
+    display: block;
+    height: 100px
+}
+
+.board {
+    position: fixed;
+    height: 100vh;
+
+}

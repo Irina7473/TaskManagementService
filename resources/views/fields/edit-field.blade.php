@@ -31,16 +31,22 @@
                     <div class="mb-3" style="display: block;height: 100px">
                         <label class="form-label">Загружен фон</label>
                         <img style="height:100%" src="{{$field->getFile()}}" alt>
-{{--                        <input type="submit" name="delfond" class="btn btn-sm btn-danger" value="Удалить">--}}
+                        {{--     <input type="submit" name="delfond" class="btn btn-sm btn-danger" value="Удалить">--}}
                     </div>
 
                 @endif
+                <div class="mb-3" style="display: block;height: 100px">
+                    <label class="form-label ">Выбрать фон для рабочего пространства</label>
+                    <img style="height:100%" src="/assets/img/fond1.jpg" class="img-fluid">
+                    <img style="height:100%" src="/assets/img/fond2.jpg" class="img-fluid">
+                    <img style="height:100%" src="/assets/img/fond3.jpg" class="img-fluid" >
+                </div>
+
                 <div class="mb-3">
-                    <label class="form-label text-primary">Загрузить фон для рабочего пространства</label>
+                    <label class="form-label ">Загрузить свой фон для рабочего пространства</label>
                     <div class="text-primary" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
-
                     <input type="file" name="fond" class="form-control">
                 </div>
 

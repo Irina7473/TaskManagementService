@@ -56,6 +56,8 @@ class TeamController extends Controller
             'field' => $field,
             'users' => $field -> users -> sortBy('name') ,
             'teams' => Team::all()->where('field_id', $field->id),
+            'projects' => $field -> projects,
+
         ]);
     }
 }

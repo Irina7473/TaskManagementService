@@ -23,13 +23,5 @@ class UserController extends Controller
         ]);
     }
 
-    /*public function show($user_id)
-    {
-        $teams = Team::all()->where('user_id', $user_id)->pluck('field_id');
-        return view('fields.show-field', [
-            'user' => User::find($user_id),
-            'fields' => Field::find($teams),
-        ]);
-    }*/
 
 }

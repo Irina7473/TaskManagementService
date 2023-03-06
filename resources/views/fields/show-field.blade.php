@@ -1,10 +1,7 @@
 <x-app-layout>
     <div class="row">
         {{--   Sidebar--}}
-        <div class="col-2 myfond3 mycolor ">
-            <x-menu.sidebar></x-menu.sidebar>
-
-        </div>
+        <div class="col-2 myfond3 mycolor "></div>
 
         {{-- Content --}}
         <div class="col-10 myfond2">

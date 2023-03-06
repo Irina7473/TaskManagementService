@@ -81,9 +81,9 @@ class ProjectController extends Controller
             'field' => $field,
             'users' => $field -> users -> sortBy('name') ,
             'teams' => Team::all()->where('field_id', $field->id),
-            'projects' => Project::all() -> where('fields_id', $project->fields_id) ->sortBy('projectName'),
-            'tasks' => $project->tasks->sortBy('taskName'),
+            'projects' => $field -> projects,
             'selected' => $project,
+            'tasks' => $project->tasks->sortBy('taskName'),
         ]);
     }
 }

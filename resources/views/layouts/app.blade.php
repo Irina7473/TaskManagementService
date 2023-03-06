@@ -19,28 +19,13 @@
 <body class="myfond1">
 
 <div>
-    <x-menu.top-menu> </x-menu.top-menu>
+    <x-top-menu/>
 </div>
 
-<h4 class="text-primary">@yield('subtitle', '')</h4>
-{{--
-
-<div class="row">
-    --}}{{--                        Sidebar--}}{{--
-    <div class="col-2 myfond3 mycolor ">
---}}{{--        @yield('sidebar', 'Здесь будут ваши проекты')--}}{{--
-                                <x-menu.sidebar></x-menu.sidebar>
-
-    </div>
-
-    --}}{{-- Content --}}{{--
-    <div class="col-10 myfond2">
-        <h4 class="text-primary bg-light">@yield('subtitle', '') </h4>--}}
-            <main>
-                {{ $slot }}
-            </main>
-{{--    </div>--}}
-{{--</div>--}}
+{{--        <h4 class="text-primary bg-light">@yield('subtitle', '') </h4>--}}
+<main>
+    {{ $slot }}
+</main>
 
 
 </body>
@@ -48,24 +33,3 @@
 <x-footer/>
 
 </html>
-
-
-{{--
-
-<body class="font-sans antialiased">
-<div class="min-h-screen bg-gray-100">
-    @include('layouts.navigation')
-
-    <!-- Page Heading -->
-    <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            {{ $header }}
-        </div>
-    </header>
-
-    <!-- Page Content -->
-    <main>
-        {{ $slot }}
-    </main>
-</div>
-</body>--}}
