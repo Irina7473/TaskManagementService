@@ -1,8 +1,6 @@
 <x-app-layout>
     <div class="row">
         {{--   Sidebar--}}
-        <div class="col-2 myfond3 mycolor ">
-{{--            <x-sidebar field="$field" field_id="$field->id" field_name="{{$field->fieldName}}"></x-sidebar>--}}
             <div class="col-2 myfond3 mycolor ">
                 @if (isset($field))
                     <div class="col-2 mycolor ">
@@ -48,8 +46,6 @@
                     </div>
                 @endif
             </div>
-
-        </div>
 
         {{-- Content --}}
 

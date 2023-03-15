@@ -17,13 +17,9 @@ class TaskController extends Controller
         //
     }
 
-    //работает
     public function create(Request $request)
     {
-        $project_id = $request->field_id;
-        return view('tasks.create-task',  [
-            'project' => Project::find($project_id),
-        ]);
+        //
     }
 
     //работает
@@ -45,14 +41,9 @@ class TaskController extends Controller
         return redirect()->route('projects.show', $project_id);
     }
 
-    //работает
     public function edit($id)
     {
-        $task = Task::find($id);
-        return view('tasks.edit-task', [
-            'task' => $task,
-            'project' => Project::find($task->project_id),
-        ]);
+        //
     }
 
     //работает
@@ -87,9 +78,10 @@ class TaskController extends Controller
             'field' => $field,
             'users' => $field -> users -> sortBy('name') ,
             'teams' => Team::all()->where('field_id', $field->id),
+            'projects' => $field -> projects,
+            'selected' => $project,
             'project' => $project,
             'task' => $task,
-//            'selected' => $task,
             'comments' => Comment::all() -> where('task_id', $task_id),
             'files' => File::all() -> where('task_id', $task_id),
         ]);

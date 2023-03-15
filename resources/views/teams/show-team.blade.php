@@ -83,13 +83,16 @@
                                 </div>
                             @endif
                         </div>
-                        <form action="#" method="POST">
-                            @csrf
-                            <div class="input-group mb-3">
-                                <input name="taskName" class="form-control" placeholder="Почта нового участника">
-                                <button class=" btn-info" id="basic-addon2">Отправить приглашение</button>
-                            </div>
+
+
+                        <h4 class="mycolor ">Пригласить нового участника</h4>
+
+                        <form action="{{ route('invites.store') }}" method="POST">
+                            {{ csrf_field() }}
+                            <input type="email" name="email" placeholder="email"/>
+                            <button type="submit" class=" btn-info">Отправить приглашение</button>
                         </form>
+
                     </div>
             </div>
     </div>

@@ -43,9 +43,12 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project = Project::find($id);
+        $field = Field::find($project->field_id);
         return view('projects.edit-project', [
             'project' => $project,
-            'field' =>Field::find($project->field_id),
+            'field' => $field,
+            'projects' => $field -> projects,
+            'selected' => $project,
         ]);
     }
 

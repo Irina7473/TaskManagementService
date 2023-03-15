@@ -14,7 +14,8 @@ class AddLabelToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->integer('label_id')->nullable();
+            $table->dateTime('deadline')->nullable()->after('description');
+            $table->integer('label_id')->unique()->after('deadline');
         });
     }
 
